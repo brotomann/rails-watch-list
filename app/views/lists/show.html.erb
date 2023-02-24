@@ -1,0 +1,18 @@
+
+
+<div class="container py-5">
+  <div class="d-flex justify-content-end">
+    <h3 class="mb-0"><%= @list.name %></h3>
+    <p><%=link_to 'Go Back', lists_path %></p>
+    <p><%= link_to 'Add new bookmark', new_list_bookmark_path(params[:id]) %></p>
+  </div>
+  <div class="row d-flex align-items-center" >
+    <% @list.bookmarks.each do |bookmark| %>
+      <div class="co-12">
+        <%= bookmark.comment%>
+        <%= link_to 'delete', bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "You sure?"} %>
+        </div>
+        <% end %>
+      </div>
+  </div>
+</div>
